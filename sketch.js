@@ -10,19 +10,25 @@ let myLeft, myRight, myTop, myBottom;
 let enemyLeft, enemyRight, enemyTop, enemyBottom;
 let pointLeft, pointRight, pointTop, pointBottom;
 // Images Function
+let turtleImg;
 let player1Img;
 let player2Img;
 let backgroundImg;
 let startImg
+let startGmScr;
+let winScr;
 let states = 'menu'
 let scores1 = 0;
 let scores2 = 0;
 
 function preload(){
     backgroundImg = loadImage("images/background.png");
-    player1Img = loadImage("images/player 1.png");
-    player2Img = loadImage("images/player 2.png");
-    startImg = loadImage("images/StartGame.jpg")
+    player1Img = loadImage("images/player1.png");
+    player2Img = loadImage("images/player2.png");
+    startImg = loadImage("images/StartGame.jpg");
+    startGmScr = loadImage("images/startgamescreen.jpg");
+    turtleImg = loadImage("images/turtle2.png");
+    winScr = loadImage("images/winscreen.png");
 }
 
 function setup() {
@@ -36,17 +42,18 @@ function setup() {
 
  function draw() {
     //Menu Background
-    image(backgroundImg, 0, 0, 1514, 755);
+    image(startGmScr, 0, 0, 1514, 755);
 
     // Beginning Screen and Menu Feel free to add images
     // to make it look nicer than just having text
     textSize(22);
-    text("Player # 1", 500, 280);
-    text("Controls WASD", 480, 420);
-    image(player1Img, 500, 300, 100, 100);
-    text("Player # 2", 1000, 280);
-    text("Controls Keys", 980, 420)
-    image(player2Img, 1000, 300, 100, 100);
+    fill(random(255), random(255), random(255));
+    text("Player #1", 200, 280);
+    text("Controls: WASD", 180, 420);
+    image(player1Img, 200, 300, 100, 100);
+    text("Player #2", 1200, 220);
+    text("Controls: Arrow Keys", 1150, 350);
+    image(player2Img, 1200, 230, 100, 100);
     // Start game state
     image(startImg, 650, 450, 300, 100)
     
@@ -54,8 +61,7 @@ function setup() {
     if( states == "Begin"){
     image(backgroundImg, 0, 0, 1514, 755);
 
-    fill(0, 255, 0);
-    rect(pointXPos, pointYPos, 50, 50);
+    image(turtleImg, pointXPos, pointYPos, 50, 50);
 
     image(player1Img, myXPos, myYPos, 50, 50);
     image(player2Img, enemyXPos, enemyYPos, 50, 50);
@@ -133,10 +139,10 @@ function setup() {
     myTop = myYPos - 25;
     myBottom = myYPos + 25;
 
-    pointLeft = pointXPos - 50;
-    pointRight = pointXPos + 0;
-    pointTop = pointYPos - 50;
-    pointBottom = pointYPos + 0;
+    pointLeft = pointXPos - 25;
+    pointRight = pointXPos + 25;
+    pointTop = pointYPos - 25;
+    pointBottom = pointYPos + 25;
 
     enemyLeft = enemyXPos - 25;
     enemyRight = enemyXPos + 25;
@@ -185,14 +191,14 @@ function setup() {
     }
  }
     if ( scores1 == 25){
-        image(backgroundImg, 0, 0, 1514, 755);
+        image(winScr, 0, 0, 1514, 755);
         fill(random(255), random(255), random(255));
         textSize(35);
         text("Player #1 Wins!", 757, 377.5, 300, 100);
         image(player1Img, 630, 400, 200, 200);
     }
     else if ( scores2 == 25){
-        image(backgroundImg, 0, 0, 1514, 755);
+        image(winScr, 0, 0, 1514, 755);
         fill(random(255), random(255), random(255));
         textSize(35);
         text("Player #2 Wins!", 757, 377.5, 300, 100);
