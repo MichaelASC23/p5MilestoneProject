@@ -1,4 +1,5 @@
 // Global
+// Player starting positions and functions
 let myXPos = 100;
 let myYPos = 100;
 let enemyXPos = 800;
@@ -167,9 +168,10 @@ function setup() {
 
     fill(random(255), random(255), random(255));
     textSize(22);
-    text("Player 1 # " + scores1, 15, 25 );
+    text("Player #1: " + scores1, 15, 25 );
     textSize(22);
-    text("Player 2 # " + scores2, 15, 50);
+    text("Player #2: " + scores2, 15, 50);
+    text("Score 25 Points to Win", 15, 75);
     if (myLeft > enemyRight || myRight < enemyLeft || myTop > enemyBottom || myBottom < enemyTop) {
 
 
@@ -181,7 +183,21 @@ function setup() {
         textSize(22);
         text("Get Away From Me!", 140, 480);
     }
-}
+ }
+    if ( scores1 == 25){
+        image(backgroundImg, 0, 0, 1514, 755);
+        fill(random(255), random(255), random(255));
+        textSize(35);
+        text("Player #1 Wins!", 757, 377.5, 300, 100);
+        image(player1Img, 630, 400, 200, 200);
+    }
+    else if ( scores2 == 25){
+        image(backgroundImg, 0, 0, 1514, 755);
+        fill(random(255), random(255), random(255));
+        textSize(35);
+        text("Player #2 Wins!", 757, 377.5, 300, 100);
+        image(player2Img, 630, 400, 200, 200);
+    }
 }
 
 function mouseClicked(){
