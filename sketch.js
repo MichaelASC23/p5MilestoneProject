@@ -8,11 +8,12 @@ let pointYPos = 350;
 let myLeft, myRight, myTop, myBottom;
 let enemyLeft, enemyRight, enemyTop, enemyBottom;
 let pointLeft, pointRight, pointTop, pointBottom;
+// Images Function
 let player1Img;
 let player2Img;
 let backgroundImg;
-let state1 = 'start menu';
-let state2 = 'game';
+let startImg
+let states = 'menu'
 let scores1 = 0;
 let scores2 = 0;
 
@@ -20,6 +21,7 @@ function preload(){
     backgroundImg = loadImage("images/background.png");
     player1Img = loadImage("images/player 1.png");
     player2Img = loadImage("images/player 2.png");
+    startImg = loadImage("images/StartGame.jpg")
 }
 
 function setup() {
@@ -27,10 +29,28 @@ function setup() {
     noStroke();
 
     rectMode(CENTER);
+    
  }
 
 
  function draw() {
+    //Menu Background
+    image(backgroundImg, 0, 0, 1514, 755);
+
+    // Beginning Screen and Menu Feel free to add images
+    // to make it look nicer than just having text
+    textSize(22);
+    text("Player # 1", 500, 280);
+    text("Controls WASD", 480, 420);
+    image(player1Img, 500, 300, 100, 100);
+    text("Player # 2", 1000, 280);
+    text("Controls Keys", 980, 420)
+    image(player2Img, 1000, 300, 100, 100);
+    // Start game state
+    image(startImg, 650, 450, 300, 100)
+    
+    
+    if( states == "Begin"){
     image(backgroundImg, 0, 0, 1514, 755);
 
     fill(0, 255, 0);
@@ -160,5 +180,13 @@ function setup() {
         fill(random(255), random(255), random(255));
         textSize(22);
         text("Get Away From Me!", 140, 480);
+    }
+}
+}
+
+function mouseClicked(){
+    if(mouseX >= 650 && mouseX <= 950 && mouseY >= 450 && mouseY <= 550 ){
+        states = 'Begin'
+
     }
 }
