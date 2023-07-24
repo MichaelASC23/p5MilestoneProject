@@ -46,8 +46,15 @@ function setup() {
     
  }
 
-
  function draw() {
+    background(0,0,0)
+
+    fill (255,255,255)
+    stroke(0)
+    strokeWeight(10)
+    textSize(100)
+  
+
     //Menu Background
     image(startGmScr, 0, 0, 1514, 755);
 
@@ -61,8 +68,7 @@ function setup() {
     image(player2Img, 1200, 230, 100, 100);
 
     // Start game state
-    image(startImg, 650, 450, 300, 100);
-    
+    image(startImg, 650, 450, 300, 100);    
     
     if( states == "Begin"){
     image(backgroundImg, 0, 0, 1514, 755);
